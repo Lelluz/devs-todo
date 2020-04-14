@@ -1,0 +1,11 @@
+@import '~antd/dist/antd.css';
+
+.action-bar {
+  height: 60px;
+  background-color: #333;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 15px;
+}
