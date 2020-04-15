@@ -4,9 +4,14 @@ import './TaskGroup.scss'
 
 const TaskGroup = () => (
   <div className="task-group">
-    <Task></Task>
-    <Task></Task>
-    <Task></Task>
+    <div className="title">
+      <h3>TITOLO</h3>
+    </div>
+    <div className="content">
+      <Task></Task>
+      <Task></Task>
+      <Task></Task>
+    </div>
   </div>
 );
 
