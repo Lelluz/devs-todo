@@ -1,6 +1,6 @@
 import React from 'react'
 import { Modal, Button } from 'antd';
-import './NewTask.scss'
+import '../styles/NewTask.scss'
 
 class NewTask extends React.Component {
   state = { visible: false };

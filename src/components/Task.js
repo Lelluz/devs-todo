@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card } from 'antd';
-import './Task.scss';
+import '../styles/Task.scss';
 import EditTask from './EditTask';
 
 const Task = () => (

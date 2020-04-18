@@ -1,7 +1,7 @@
 import React from 'react'
-import ActionBar from './components/ActionBar'
-import TaskGroup from './components/TaskGroup'
-import './App.scss'
+import ActionBar from './ActionBar'
+import TaskGroup from './TaskGroup'
+import '../styles/App.scss'
 
 const App = () => (
   <div className="App">

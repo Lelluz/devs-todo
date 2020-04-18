@@ -1,6 +1,6 @@
 import React from 'react'
 import NewTask from './NewTask'
-import './ActionBar.scss'
+import '../styles/ActionBar.scss'
 
 const ActionBar = () => (
   <nav className="action-bar">

@@ -1,6 +1,6 @@
 import React from 'react'
 import Task from './Task'
-import './TaskGroup.scss'
+import '../styles/TaskGroup.scss'
 
 const TaskGroup = () => (
   <div className="task-group">
