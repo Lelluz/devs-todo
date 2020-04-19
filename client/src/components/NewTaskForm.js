@@ -17,6 +17,8 @@ const validateMessages = {
 
 function NewTaskForm () {
 
+  const [form] = Form.useForm()
+
   const onFinish = values => {
     console.log(values)
 
@@ -26,19 +28,19 @@ function NewTaskForm () {
       data: values
     })
       .then(() => {
-        console.log('I dati sono stati inviati al server');
+        console.log('I dati sono stati inviati al server')
       })
       .catch(() => {
-        console.log('Internal server error');
+        console.log('Internal server error')
       })
-  };
+  }
 
   const onChangeDate = (value, dateString) => {
     console.log('Selected Time: ', value);
     console.log('Formatted Selected Time: ', dateString);
   }
   
-  const onOk = (value) => {
+  const onOkDate = (value) => {
     console.log('onOk: ', value);
   }
 
@@ -60,7 +62,7 @@ function NewTaskForm () {
         <Input.TextArea />
       </Form.Item>
       <Form.Item name='date' label="Data" rules={[{ required: true }]}>
-        <DatePicker showTime onChange={onChangeDate} onOk={onOk} />
+        <DatePicker showTime onChange={onChangeDate} onOk={onOkDate} />
       </Form.Item>
       <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
         <Button type="primary" htmlType="submit">
@@ -68,7 +70,7 @@ function NewTaskForm () {
         </Button>
       </Form.Item>
     </Form>
-  );
-};
+  )
+}
 
 export default NewTaskForm
