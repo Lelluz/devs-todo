@@ -7,6 +7,6 @@ const CategorySchema = new Schema({
   title: String
 })
 
-const Category = mongoose.model('Task', CategorySchema)
+const Category = mongoose.model('Category', CategorySchema)
 
 module.exports = Category
