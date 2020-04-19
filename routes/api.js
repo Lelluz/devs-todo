@@ -23,9 +23,9 @@ router.post('/saveNewTask', (req, res) => {
   newTask.save(error => {
     if (error) {
       res.status(500).json({ msg: 'Sorry, internal server errors' })
-    } else {
-      res.status(200).json({ msg: 'Your task has been saved!' })
+      return
     }
+    return res.json({ msg: 'Your task has been saved!' })
   })
 })
 
