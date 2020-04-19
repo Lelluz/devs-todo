@@ -17,6 +17,8 @@ mongoose.connection.on('connected', () => {
   console.log('mongoose is connected!')
 })
 
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
 app.use(morgan('tiny'))
 app.use('/api', routes)
 app.listen(PORT, console.log(`Server is starting at ${PORT}`))
