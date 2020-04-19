@@ -1,0 +1,12 @@
+const mongoose = require('mongoose')
+
+const Schema = mongoose.Schema
+const UserSchema = new Schema({
+  id: Number,
+  username: String,
+  password: String
+})
+
+const User = mongoose.model('Task', UserSchema)
+
+module.exports = User
