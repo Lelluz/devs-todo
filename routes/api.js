@@ -1,7 +1,9 @@
 const express = require('express')
 const router = express.Router()
 
+const Category = require('../models/Category')
 const Task = require('../models/Task')
+const User = require('../models/User')
 
 router.get('/', (req, res) => {
 
@@ -14,12 +16,17 @@ router.get('/', (req, res) => {
     })
 })
 
-router.get('/name', (req, res) => {
-  const data = {
-    username: 'giuliano',
-    age: 5
-  }
-  res.json(data)
+router.post('/saveNewTask', (req, res) => {
+
+  const data = req.body
+  const newTask = new Task(data)
+  newTask.save(error => {
+    if (error) {
+      res.status(500).json({ msg: 'Sorry, internal server errors' })
+    } else {
+      res.status(200).json({ msg: 'Your task has been saved!' })
+    }
+  })
 })
 
 module.exports = router
