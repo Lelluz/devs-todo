@@ -1,10 +1,10 @@
 import React from 'react'
-import NewTask from './NewTask'
+import NewTaskModal from './NewTaskModal'
 import '../styles/ActionBar.scss'
 
 const ActionBar = () => (
   <nav className="action-bar">
-    <NewTask></NewTask>
+    <NewTaskModal></NewTaskModal>
   </nav>
 );
 

@@ -3,7 +3,7 @@ const router = express.Router()
 
 const Task = require('../models/Task')
 
-router.get('/api', (req, res) => {
+router.get('/', (req, res) => {
 
   Task.find({  })
     .then(data => {
@@ -14,7 +14,7 @@ router.get('/api', (req, res) => {
     })
 })
 
-router.get('/api/name', (req, res) => {
+router.get('/name', (req, res) => {
   const data = {
     username: 'giuliano',
     age: 5

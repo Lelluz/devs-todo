@@ -1,8 +1,9 @@
 import React from 'react'
-import { Modal, Button } from 'antd';
-import '../styles/NewTask.scss'
+import { Modal, Button } from 'antd'
+import '../styles/NewTaskModal.scss'
+import NewTaskForm from './NewTaskForm'
 
-class NewTask extends React.Component {
+class NewTaskModal extends React.Component {
   state = { visible: false };
 
   showModal = () => {
@@ -32,18 +33,17 @@ class NewTask extends React.Component {
           Nuovo task
         </Button>
         <Modal
-          title="Basic Modal"
+          title="Nuovo task"
           visible={this.state.visible}
+          centered
           onOk={this.handleOk}
           onCancel={this.handleCancel}
         >
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
+          <NewTaskForm></NewTaskForm>
         </Modal>
       </div>
     );
   }
 }
 
-export default NewTask
+export default NewTaskModal
