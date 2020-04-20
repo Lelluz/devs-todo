@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 8080
 
 const routes = require('./routes/api')
 
-mongoose.connect('mongodb://localhost/dev-todos', {
+mongoose.connect('mongodb://localhost/devs-todo', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
