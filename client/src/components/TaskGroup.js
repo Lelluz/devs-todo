@@ -1,24 +1,45 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { notification } from 'antd';
 import Task from './Task'
+import axios from 'axios'
 import '../styles/TaskGroup.scss'
 
-function TaskGroup () {
+function TaskGroup() {
 
-  const displayCategories = (categories) => {
+  const [state, setTasks] = useState({
+    tasks: []
+  })
 
-    if (!categories.length) return null
+  useEffect(() => getCategories(), [])
 
-    return categories.map((category, index) => (
-      <Task key={index} title={category.title}></Task>
+  const getCategories = () => {
+    axios.get('/api/tasks')
+      .then(response => {
+        const data = response.data
+        setTasks(state.tasks = data)
+      })
+      .catch(() => {
+        notification.error({
+          message: 'Error loading tasks'
+        })
+      })
+  }
+
+  const displayTasks = (tasks) => {
+
+    if (!tasks.length) return null
+
+    return tasks.map((task, index) => (
+      <Task key={index} title={task.title}></Task>
     ))
   }
 
-  return(
+  return (
     <div className="task-group">
       <div className="title">
         <h3>TITOLO</h3>
       </div>
-      <div className="content">{ }</div>
+      <div className="content">{displayTasks(state.tasks)}</div>
     </div>
   )
 }

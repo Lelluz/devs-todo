@@ -4,7 +4,7 @@ import '../styles/NewTaskModal.scss'
 import NewTaskForm from './NewTaskForm'
 
 class NewTaskModal extends React.Component {
-  state = { visible: false };
+  state = { visible: false }
 
   showModal = () => {
     this.setState({
@@ -28,7 +28,7 @@ class NewTaskModal extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={'action-bar-item'}>
         <Button type="primary" onClick={this.showModal}>
           Nuovo task
         </Button>

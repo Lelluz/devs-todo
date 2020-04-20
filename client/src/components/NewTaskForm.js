@@ -4,7 +4,7 @@ import moment from 'moment'
 import axios from 'axios'
 import '../styles/NewTaskForm.scss'
 
-const { Option } = Select;
+const { Option } = Select
 
 const layout = {
   labelCol: { span: 6 },
@@ -13,11 +13,11 @@ const layout = {
 
 const validateMessages = {
   required: '${label} is required!'
-};
+}
 
-function NewTaskForm () {
+function NewTaskForm() {
 
-  const [form] = Form.useForm()
+  const [newTaskForm] = Form.useForm()
 
   const onFinish = values => {
     console.log(values)
@@ -29,6 +29,7 @@ function NewTaskForm () {
     })
       .then(() => {
         console.log('I dati sono stati inviati al server')
+        newTaskForm.resetFields()
       })
       .catch(() => {
         console.log('Internal server error')
@@ -39,13 +40,13 @@ function NewTaskForm () {
     console.log('Selected Time: ', value);
     console.log('Formatted Selected Time: ', dateString);
   }
-  
+
   const onOkDate = (value) => {
     console.log('onOk: ', value);
   }
 
   return (
-    <Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages} initialValues={{ date: moment() }}>
+    <Form {...layout} form={newTaskForm} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages} initialValues={{ date: moment() }}>
       <Form.Item name='title' label="Titolo" rules={[{ required: true }]}>
         <Input />
       </Form.Item>
@@ -64,7 +65,7 @@ function NewTaskForm () {
       <Form.Item name='date' label="Data" rules={[{ required: true }]}>
         <DatePicker showTime onChange={onChangeDate} onOk={onOkDate} />
       </Form.Item>
-      <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
+      <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 6 }}>
         <Button type="primary" htmlType="submit">
           Crea
         </Button>
