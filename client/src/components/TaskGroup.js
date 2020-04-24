@@ -6,17 +6,14 @@ import '../styles/TaskGroup.scss'
 
 function TaskGroup() {
 
-  const [state, setTasks] = useState({
-    tasks: []
-  })
+  const [tasks, setTasks] = useState([])
 
   useEffect(() => getCategories(), [])
 
   const getCategories = () => {
     axios.get('/api/tasks')
       .then(response => {
-        const data = response.data
-        setTasks(state.tasks = data)
+        setTasks(response.data)
       })
       .catch(() => {
         notification.error({
@@ -39,7 +36,7 @@ function TaskGroup() {
       <div className="title">
         <h3>TITOLO</h3>
       </div>
-      <div className="content">{displayTasks(state.tasks)}</div>
+      <div className="content">{displayTasks(tasks)}</div>
     </div>
   )
 }
