@@ -18,8 +18,6 @@ function NewCategoryForm() {
   const [newCategoryForm] = Form.useForm()
 
   const onFinish = values => {
-    console.log(values)
-
     axios({
       url: 'http://localhost:3000/api/saveNewCategory',
       method: 'POST',
