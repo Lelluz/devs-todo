@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react'
-import { notification } from 'antd';
+import { notification } from 'antd'
 import Task from './Task'
 import axios from 'axios'
 import '../styles/TaskGroup.scss'
 
 function TaskGroup() {
 
-  const [tasks, setTasks] = useState([])
+  const [tasks, setTasksState] = useState([])
 
-  useEffect(() => getCategories(), [])
+  useEffect(() => getTasks(), [])
 
-  const getCategories = () => {
+  const getTasks = () => {
     axios.get('/api/tasks')
       .then(response => {
-        setTasks(response.data)
+        setTasksState(response.data)
       })
       .catch(() => {
         notification.error({

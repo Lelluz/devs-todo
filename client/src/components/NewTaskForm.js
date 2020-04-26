@@ -1,5 +1,5 @@
-import React from 'react'
-import { Form, Input, Select, DatePicker, Button } from 'antd'
+import React, { useState, useEffect } from 'react'
+import { Form, Input, Select, DatePicker, Button, notification} from 'antd'
 import moment from 'moment'
 import axios from 'axios'
 import '../styles/NewTaskForm.scss'
@@ -19,6 +19,10 @@ function NewTaskForm() {
 
   const [newTaskForm] = Form.useForm()
 
+  const [categories, setCategoriesState] = useState([])
+
+  useEffect(() => getCategories(), [])
+
   const onFinish = values => {
     console.log(values)
 
@@ -34,6 +38,28 @@ function NewTaskForm() {
       .catch(() => {
         console.log('Internal server error')
       })
+  }
+
+  const getCategories = () => {
+    axios.get('/api/categories')
+    .then(response => {
+      setCategoriesState(response.data)
+      console.log(response.data)
+    })
+    .catch(() => {
+      notification.error({
+        message: 'Error loading categories'
+      })
+    })
+  }
+
+  const displayCategories = (categories) => {
+
+    if (!categories.length) return null
+
+    return categories.map((category, index) => (
+      <Option key={index} value={category._id}>{category.title}</Option>
+    ))
   }
 
   const onChangeDate = (value, dateString) => {
@@ -55,8 +81,7 @@ function NewTaskForm() {
       </Form.Item>
       <Form.Item name='categoryId' label="Categoria" rules={[{ required: true }]}>
         <Select defaultValue="Seleziona la categoria del task">
-          <Option value="1">Zhejiang</Option>
-          <Option value="2">Jiangsu</Option>
+          {displayCategories(categories)}
         </Select>
       </Form.Item>
       <Form.Item name='notes' label="Note">
