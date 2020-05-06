@@ -1,8 +1,8 @@
 .task-group {
   display: flex;
-
   justify-content: space-between;
   align-items: center;
+  overflow: auto;
 
   .title {
     min-width: 250px;
@@ -14,5 +14,15 @@
   }
   .content {
     display: flex;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .task-group {
+    flex-direction: column;
+    overflow: hidden!important;
+    .content {
+      flex-direction: column;
+    }
   }
 }
