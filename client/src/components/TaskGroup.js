@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
+import { connect } from 'react-redux'
 import { notification } from 'antd'
 import Task from './Task'
 import axios from 'axios'
 import '../styles/TaskGroup.scss'
 
-function TaskGroup() {
+function TaskGroup(props) {
 
   const [tasks, setTasksState] = useState([])
 
@@ -34,11 +35,14 @@ function TaskGroup() {
   return (
     <div className="task-group">
       <div className="title">
-        <h3>TITOLO</h3>
+        <h3>{props.title}</h3>
       </div>
       <div className="content">{displayTasks(tasks)}</div>
     </div>
   )
 }
 
-export default TaskGroup
+const mapStateToProps = tasks => ({
+  tasks: tasks
+})
+export default connect(mapStateToProps)(TaskGroup)
